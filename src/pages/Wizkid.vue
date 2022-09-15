@@ -18,7 +18,7 @@ const wizkid = useWizkidById(route.params.id as string);
         <hr />
         <h2>{{ wizkid?.role }}</h2>
 
-        <Classified is="router-link" to="/login">
+        <Classified>
           <div>
             {{ wizkid?.email }}
           </div>
