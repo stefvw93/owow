@@ -1,3 +1,4 @@
+import { faker } from "@faker-js/faker";
 import { defineStore } from "pinia";
 
 export const useApiStore = defineStore("api", {
@@ -6,7 +7,7 @@ export const useApiStore = defineStore("api", {
 
   actions: {
     async createWizkid(body: Wizkid) {
-      this.wizkids = [...this.wizkids, body];
+      this.wizkids = [...this.wizkids, { id: faker.datatype.uuid(), ...body }];
     },
   },
 
