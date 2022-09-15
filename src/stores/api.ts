@@ -66,6 +66,7 @@ export const useApiStore = defineStore("api", {
     },
 
     async fireWizkid(id?: string) {
+      if (!this.authenticated) throw new Error("only users can fire wizkids.");
       if (!id) throw new Error("id is undefined");
       await sleep(Math.random() * 300);
       const record = this.wizkids.find((e) => e.id === id);
@@ -75,6 +76,8 @@ export const useApiStore = defineStore("api", {
     },
 
     async unfireWizkid(id?: string) {
+      if (!this.authenticated)
+        throw new Error("only users can unfire wizkids.");
       if (!id) throw new Error("id is undefined");
       await sleep(Math.random() * 300);
       const record = this.wizkids.find((e) => e.id === id);
