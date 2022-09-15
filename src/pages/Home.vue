@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { useApiStore } from "../stores/api";
 import WizkidCard from "../components/WizkidCard.vue";
+import WizkidCardSkeleton from "../components/WizkidCardSkeleton.vue";
 const { wizkids } = useApiStore();
 </script>
 
 <template>
-  <a href="#/create-wizkid">Add a Wizkid</a>
-
   <div class="wizkids-overview">
     <WizkidCard
       v-for="wizkid in wizkids"
@@ -14,6 +13,7 @@ const { wizkids } = useApiStore();
       class="card"
       :wizkid="wizkid"
     />
+    <WizkidCardSkeleton is="a" href="#/create-wizkid" />
   </div>
 </template>
 

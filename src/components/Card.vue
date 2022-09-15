@@ -1,9 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="card">
+  <component class="card" :is="$attrs.is || 'div'" v-bind="$attrs">
     <slot />
-  </div>
+  </component>
 </template>
 
 <style lang="scss" scoped>
