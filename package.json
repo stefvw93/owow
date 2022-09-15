@@ -8,6 +8,9 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "npm run build && vite preview"
   },
+  "engines": {
+    "node": "16"
+  },
   "dependencies": {
     "@faker-js/faker": "^7.5.0",
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
