@@ -1,14 +1,14 @@
 :root {
   --white: #ffffffff;
-  --opera-mauve: #ad7a99ff;
+  --vivid-burgundy: #a62639ff;
   --beau-blue: #a2cedeff;
   --middle-blue-green: #8cdfd6ff;
   --middle-blue: #6dc0d5ff;
-  --hookers-green: #5a716aff;
+  --organic-green: #5a716aff;
 
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -28,6 +28,10 @@ body,
 #app {
   width: 100%;
   height: 100%;
+}
+
+a {
+  color: var(--vivid-burgundy);
 }
 
 input,
@@ -64,7 +68,7 @@ select {
   width: 100%;
   appearance: none;
   padding: 1rem;
-  border: 2px solid var(--hookers-green);
+  border: 2px solid var(--organic-green);
   border-radius: 0.5rem;
   outline: none;
   transition: border-color 0.3s ease-out;
@@ -72,6 +76,6 @@ select {
   &:active,
   &:focus {
     transition-duration: 0s;
-    border-color: var(--opera-mauve);
+    border-color: var(--vivid-burgundy);
   }
 }

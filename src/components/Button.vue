@@ -8,9 +8,9 @@
 
 <style scoped lang="scss">
 .button {
-  background: var(--opera-mauve);
+  background: var(--vivid-burgundy);
   padding: 1rem;
-  border: 2px solid var(--opera-mauve);
+  border: 2px solid var(--vivid-burgundy);
   border-radius: 0.5rem;
   color: white;
   font-weight: bolder;

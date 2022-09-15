@@ -47,7 +47,7 @@ import Card from "./Card.vue";
     height: 128px;
     border: 1px solid var(--white);
     background: var(--white);
-    color: var(--hookers-green);
+    color: var(--organic-green);
     font-size: 50px;
   }
 
@@ -66,7 +66,7 @@ import Card from "./Card.vue";
   }
 
   .role {
-    color: var(--hookers-green);
+    color: var(--organic-green);
   }
 }
 </style>

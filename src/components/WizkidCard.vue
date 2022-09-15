@@ -66,7 +66,7 @@ defineProps<{ wizkid: Wizkid }>();
   }
 
   .role {
-    color: var(--hookers-green);
+    color: var(--organic-green);
   }
 }
 </style>
