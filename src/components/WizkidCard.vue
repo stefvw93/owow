@@ -52,16 +52,18 @@ defineProps<{ wizkid: Wizkid }>();
   }
 
   .bio {
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    align-items: center;
+    gap: 0.5rem;
+
     .name {
       font-size: 1.2rem;
     }
 
     hr {
-      border: none;
       width: 25%;
-      height: 1px;
-      background: black;
     }
   }
 

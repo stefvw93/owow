@@ -2,7 +2,6 @@ import { createApp } from "vue";
 import "./style.scss";
 import App from "./App.vue";
 import { createPinia } from "pinia";
-import piniaPersist from "pinia-plugin-persist";
 import { library as iconLibrary } from "@fortawesome/fontawesome-svg-core";
 import {
   faXmark,
@@ -16,6 +15,7 @@ import Home from "./pages/Home.vue";
 import NotFound from "./pages/NotFound.vue";
 import Wizkid from "./pages/Wizkid.vue";
 import CreateWizkid from "./pages/CreateWizkid.vue";
+import { useApiStore } from "./stores/api";
 
 const app = createApp(App);
 
@@ -27,8 +27,10 @@ app.component("font-awesome-icon", FontAwesomeIcon);
 app.component("FontAwesomeIcon", FontAwesomeIcon);
 
 const pinia = createPinia();
-pinia.use(piniaPersist);
 app.use(pinia);
+useApiStore().$subscribe((_, state) =>
+  localStorage.setItem("store", JSON.stringify(state))
+);
 
 const router = createRouter({
   history: createWebHashHistory(),

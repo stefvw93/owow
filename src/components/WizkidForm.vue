@@ -32,7 +32,7 @@ async function handleSubmit() {
       required
     />
     <TextInput
-      type="phone"
+      type="tel"
       v-model="formData.phoneNumber"
       placeholder="+31 x xx xx xx xx"
       required

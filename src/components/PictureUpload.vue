@@ -15,7 +15,7 @@ async function handleUpload() {
   isLoading.value = true;
   await sleep(300);
   isLoading.value = false;
-  picture.value = faker.image.avatar();
+  picture.value = faker.image.abstract(512, 512, true);
 }
 
 watch([picture], () => {
