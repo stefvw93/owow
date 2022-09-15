@@ -8,13 +8,18 @@ import {
   faChevronDown,
   faUserAstronaut,
   faPlus,
+  faPenToSquare,
+  faFaceSadTear,
+  faTrash,
+  faTrashArrowUp,
+  faFaceSmile,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "./pages/Home.vue";
 import NotFound from "./pages/NotFound.vue";
 import Wizkid from "./pages/Wizkid.vue";
-import CreateWizkid from "./pages/CreateWizkid.vue";
+import EditWizkid from "./pages/EditWizkid.vue";
 import Login from "./pages/Login.vue";
 import { useApiStore } from "./stores/api";
 
@@ -24,6 +29,11 @@ iconLibrary.add(faXmark);
 iconLibrary.add(faChevronDown);
 iconLibrary.add(faUserAstronaut);
 iconLibrary.add(faPlus);
+iconLibrary.add(faPenToSquare);
+iconLibrary.add(faFaceSadTear);
+iconLibrary.add(faTrash);
+iconLibrary.add(faTrashArrowUp);
+iconLibrary.add(faFaceSmile);
 app.component("font-awesome-icon", FontAwesomeIcon);
 app.component("FontAwesomeIcon", FontAwesomeIcon);
 
@@ -38,7 +48,8 @@ const router = createRouter({
   routes: [
     { path: "/", component: Home },
     { path: "/login", component: Login },
-    { path: "/wizkid/create", component: CreateWizkid },
+    { path: "/wizkid/create", component: EditWizkid },
+    { path: "/wizkid/edit", component: EditWizkid },
     { path: "/wizkid/:id", component: Wizkid },
     { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
   ],

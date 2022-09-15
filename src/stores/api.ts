@@ -18,7 +18,69 @@ export const useApiStore = defineStore("api", {
   actions: {
     async createWizkid(body: Wizkid) {
       await sleep(Math.random() * 300);
-      this.wizkids = [...this.wizkids, { id: faker.datatype.uuid(), ...body }];
+
+      const newKid: Wizkid = {
+        id: faker.datatype.uuid(),
+        isEmployee: true,
+        ...body,
+      };
+
+      this.wizkids = [...this.wizkids, newKid];
+      return newKid;
+    },
+
+    async updateWizkid(body: Partial<Wizkid>) {
+      await sleep(Math.random() * 300);
+
+      const record: Record<string, any> | undefined = this.wizkids.find(
+        (e) => e.id === body.id
+      );
+
+      if (!record) {
+        throw new Error(`Could not update wizkid with id ${body.id}`);
+      }
+
+      Object.entries(body).forEach(([key, value]) => {
+        record[key] = value;
+      });
+
+      return record;
+    },
+
+    async deleteWizkid(id?: string) {
+      if (!id) throw new Error("id is undefined");
+      await sleep(Math.random() * 300);
+      const record = this.wizkids.find((e) => e.id === id);
+      if (!record) return;
+      record.archived = true;
+      return record;
+    },
+
+    async restoreWizkid(id?: string) {
+      if (!id) throw new Error("id is undefined");
+      await sleep(Math.random() * 300);
+      const record = this.wizkids.find((e) => e.id === id);
+      if (!record) return;
+      record.archived = false;
+      return record;
+    },
+
+    async fireWizkid(id?: string) {
+      if (!id) throw new Error("id is undefined");
+      await sleep(Math.random() * 300);
+      const record = this.wizkids.find((e) => e.id === id);
+      if (!record) return;
+      record.isEmployee = false;
+      return record;
+    },
+
+    async unfireWizkid(id?: string) {
+      if (!id) throw new Error("id is undefined");
+      await sleep(Math.random() * 300);
+      const record = this.wizkids.find((e) => e.id === id);
+      if (!record) return;
+      record.isEmployee = true;
+      return record;
     },
 
     async login() {
@@ -51,6 +113,7 @@ export type Wizkid = {
   /* meta */
   id?: string;
   archived?: boolean;
+  isEmployee?: boolean;
 };
 
 export type WizkidRole = "boss" | "developer" | "designer" | "intern";

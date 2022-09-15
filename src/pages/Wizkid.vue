@@ -2,7 +2,12 @@
 import { useRoute } from "vue-router";
 import { useWizkidById } from "../utils";
 import Classified from "../components/Classified.vue";
+import Button from "../components/Button.vue";
+import { useApiStore } from "../stores/api";
+
 const route = useRoute();
+const { authenticated, deleteWizkid, restoreWizkid, fireWizkid, unfireWizkid } =
+  useApiStore();
 const wizkid = useWizkidById(route.params.id as string);
 </script>
 
@@ -28,10 +33,61 @@ const wizkid = useWizkidById(route.params.id as string);
         </Classified>
       </div>
     </div>
+
+    <div class="edit">
+      <Button is="router-link" :to="`/wizkid/edit/?id=${wizkid?.id}`">
+        <font-awesome-icon icon="fa-solid fa-pen-to-square" /> Edit
+      </Button>
+
+      <Button
+        v-if="authenticated"
+        @click="
+          wizkid?.isEmployee ? fireWizkid(wizkid?.id) : unfireWizkid(wizkid?.id)
+        "
+      >
+        <font-awesome-icon
+          v-if="wizkid?.isEmployee"
+          icon="fa-solid fa-face-sad-tear"
+        />
+        <font-awesome-icon
+          v-if="!wizkid?.isEmployee"
+          icon="fa-solid fa-face-smile"
+        />
+        {{ wizkid?.isEmployee ? "Fire!" : "Hire!" }}
+      </Button>
+
+      <Button
+        @click="
+          wizkid?.archived
+            ? restoreWizkid(wizkid?.id)
+            : deleteWizkid(wizkid?.id)
+        "
+      >
+        <font-awesome-icon
+          v-if="wizkid?.archived"
+          icon="fa-solid fa-trash-arrow-up"
+        />
+        <font-awesome-icon v-if="!wizkid?.archived" icon="fa-solid fa-trash" />
+        {{ wizkid?.archived ? "Restore" : "Delete" }}
+      </Button>
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
+.edit {
+  margin: 2rem 0;
+  display: flex;
+  gap: 1rem;
+  flex-direction: row-reverse;
+  justify-content: end;
+
+  *[type="button"] {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
 .picture {
   grid-column-start: 1;
   grid-column-end: 5;

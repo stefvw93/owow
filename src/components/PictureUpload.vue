@@ -4,18 +4,18 @@ import { ref, watch } from "vue";
 import { sleep } from "../utils";
 import Button from "./Button.vue";
 
-defineProps<{ modelValue?: string }>();
+const props = defineProps<{ modelValue?: string }>();
 const emit = defineEmits(["update:modelValue"]);
 
 const isLoading = ref(false);
-const picture = ref<string>();
+const picture = ref(props.modelValue);
 
 async function handleUpload() {
   if (!!picture.value) return;
   isLoading.value = true;
   await sleep(300);
   isLoading.value = false;
-  picture.value = faker.image.abstract(512, 512, true);
+  picture.value = faker.image.abstract(512, 512);
 }
 
 watch([picture], () => {

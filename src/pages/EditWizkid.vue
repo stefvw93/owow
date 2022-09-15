@@ -1,15 +1,22 @@
 <script setup lang="ts">
+import { useRoute, useRouter } from "vue-router";
 import WizkidForm from "../components/WizkidForm.vue";
 import { Wizkid } from "../stores/api";
+import { useWizkidById } from "../utils";
+
+const router = useRouter();
+const route = useRoute();
+const defaultData = useWizkidById(route.query.id as string);
+
 function handleSubmit(data: Wizkid) {
-  console.log("submitted!", data);
+  router.push(`/wizkid/${data.id}`);
 }
 </script>
 
 <template>
   <div class="page">
     <div class="form">
-      <WizkidForm @created="handleSubmit" />
+      <WizkidForm :default-data="defaultData" @created="handleSubmit" />
     </div>
   </div>
 </template>

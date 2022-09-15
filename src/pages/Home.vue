@@ -2,7 +2,11 @@
 import { useApiStore } from "../stores/api";
 import WizkidCard from "../components/WizkidCard.vue";
 import WizkidCardSkeleton from "../components/WizkidCardSkeleton.vue";
-const { wizkids } = useApiStore();
+import { computed } from "@vue/reactivity";
+const { wizkids: unfilteredWizkids } = useApiStore();
+const wizkids = computed(() =>
+  unfilteredWizkids.filter((e) => [e.isEmployee, !e.archived].every(Boolean))
+);
 </script>
 
 <template>
