@@ -7,15 +7,16 @@ import PictureUpload from "./PictureUpload.vue";
 import Select from "./Select.vue";
 
 const props = defineProps<{ defaultData?: Wizkid }>();
+const editMode = !!props.defaultData;
 const emit = defineEmits(["created"]);
 const { createWizkid, updateWizkid } = useApiStore();
 const roles: WizkidRole[] = ["boss", "developer", "designer", "intern"];
 const formData = reactive<Partial<Wizkid>>(props.defaultData ?? {});
 
 async function handleSubmit() {
-  const newKid = await (!!props.defaultData
-    ? createWizkid(formData as Wizkid)
-    : updateWizkid(formData as Wizkid));
+  const newKid = await (editMode
+    ? updateWizkid(formData as Wizkid)
+    : createWizkid(formData as Wizkid));
 
   emit("created", newKid);
 }
