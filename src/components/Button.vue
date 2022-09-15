@@ -1,9 +1,14 @@
 <script setup lang="ts"></script>
 
 <template>
-  <button class="button center touch-opacity" type="button" v-bind="$attrs">
+  <component
+    class="button center touch-opacity"
+    type="button"
+    :is="$attrs.is || 'button'"
+    v-bind="$attrs"
+  >
     <slot />
-  </button>
+  </component>
 </template>
 
 <style scoped lang="scss">

@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { defineStore } from "pinia";
+import { sleep } from "../utils";
 
 type State = {
   wizkids: Wizkid[];
@@ -16,7 +17,18 @@ export const useApiStore = defineStore("api", {
 
   actions: {
     async createWizkid(body: Wizkid) {
+      await sleep(Math.random() * 300);
       this.wizkids = [...this.wizkids, { id: faker.datatype.uuid(), ...body }];
+    },
+
+    async login() {
+      await sleep(Math.random() * 300);
+      this.authenticated = true;
+    },
+
+    async logout() {
+      await sleep(Math.random() * 300);
+      this.authenticated = false;
     },
   },
 });

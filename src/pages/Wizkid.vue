@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 import { useWizkidById } from "../utils";
+import Classified from "../components/Classified.vue";
 const route = useRoute();
 const wizkid = useWizkidById(route.params.id as string);
 </script>
@@ -16,12 +17,15 @@ const wizkid = useWizkidById(route.params.id as string);
         <h1>{{ wizkid?.name }}</h1>
         <hr />
         <h2>{{ wizkid?.role }}</h2>
-        <div>
-          {{ wizkid?.email }}
-        </div>
-        <div>
-          {{ wizkid?.phoneNumber }}
-        </div>
+
+        <Classified is="router-link" to="/login">
+          <div>
+            {{ wizkid?.email }}
+          </div>
+          <div>
+            {{ wizkid?.phoneNumber }}
+          </div>
+        </Classified>
       </div>
     </div>
   </div>

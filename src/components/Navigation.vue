@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useApiStore } from "../stores/api";
 import Button from "./Button.vue";
 
+const { logout } = useApiStore();
 const doShowMenu = ref(false);
 const closeMenu = () => (doShowMenu.value = !doShowMenu.value);
 </script>
@@ -15,6 +17,7 @@ const closeMenu = () => (doShowMenu.value = !doShowMenu.value);
       <div @click="closeMenu">
         <router-link to="/">Home</router-link>
         <router-link to="/wizkid/create">Add a new Wizkid</router-link>
+        <router-link to="/" @click.native="logout">Log out</router-link>
       </div>
 
       <div class="close touch-opacity" @click="closeMenu">
