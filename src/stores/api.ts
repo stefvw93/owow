@@ -6,8 +6,13 @@ export const useApiStore = defineStore("api", {
 
   actions: {
     async createWizkid(body: Wizkid) {
-      this.wizkids.push(body);
+      this.wizkids = [...this.wizkids, body];
     },
+  },
+
+  persist: {
+    enabled: true,
+    strategies: [{ storage: localStorage, paths: ["wizkids"] }],
   },
 });
 
@@ -31,9 +36,4 @@ export type Wizkid = {
   archived?: boolean;
 };
 
-export enum WizkidRole {
-  Boss,
-  Developer,
-  Designer,
-  Intern,
-}
+export type WizkidRole = "boss" | "developer" | "designer" | "intern";
