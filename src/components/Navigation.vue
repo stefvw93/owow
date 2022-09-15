@@ -27,9 +27,7 @@ const closeMenu = () => (doShowMenu.value = !doShowMenu.value);
         <router-link v-if="authenticated" to="/" @click.native="logout">
           Log out
         </router-link>
-        <router-link v-if="!authenticated" to="/login" @click.native="logout">
-          Log in
-        </router-link>
+        <router-link v-if="!authenticated" to="/login"> Log in </router-link>
       </div>
 
       <div class="close touch-opacity" @click="closeMenu">
