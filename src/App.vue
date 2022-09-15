@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import Router from "./components/Router.vue";
 import Navigation from "./components/Navigation.vue";
 </script>
 
 <template>
   <div class="root">
     <Navigation />
-    <Router />
+    <router-view />
   </div>
 </template>
 

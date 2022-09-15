@@ -7,8 +7,10 @@ function handleSubmit(data: Wizkid) {
 </script>
 
 <template>
-  <div class="form">
-    <WizkidForm @created="handleSubmit" />
+  <div class="page">
+    <div class="form">
+      <WizkidForm @created="handleSubmit" />
+    </div>
   </div>
 </template>
 
@@ -17,5 +19,6 @@ function handleSubmit(data: Wizkid) {
   flex: 1fr;
   width: 100%;
   max-width: 800px;
+  margin-inline: auto;
 }
 </style>

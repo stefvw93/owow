@@ -8,13 +8,13 @@ const closeMenu = () => (doShowMenu.value = !doShowMenu.value);
 
 <template>
   <div class="navigation">
-    <a href="/">Home</a>
+    <router-link to="/">Home</router-link>
     <Button @click="closeMenu">Menu</Button>
 
     <div class="menu" :class="{ hidden: !doShowMenu }">
       <div @click="closeMenu">
-        <a href="/">Home</a>
-        <a href="/#/create-wizkid">Add a new Wizkid</a>
+        <router-link to="/">Home</router-link>
+        <router-link to="/wizkid/create">Add a new Wizkid</router-link>
       </div>
 
       <div class="close touch-opacity" @click="closeMenu">

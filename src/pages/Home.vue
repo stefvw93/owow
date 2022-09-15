@@ -6,14 +6,16 @@ const { wizkids } = useApiStore();
 </script>
 
 <template>
-  <div class="wizkids-overview">
+  <div class="page wizkids-overview">
     <WizkidCard
       v-for="wizkid in wizkids"
       :key="wizkid.id"
-      class="card"
       :wizkid="wizkid"
+      class="card"
+      is="router-link"
+      :to="`/wizkid/${wizkid.id}`"
     />
-    <WizkidCardSkeleton is="a" href="#/create-wizkid" />
+    <WizkidCardSkeleton class="card" is="router-link" to="/wizkid/create" />
   </div>
 </template>
 
@@ -22,7 +24,6 @@ const { wizkids } = useApiStore();
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(1, 1fr);
-  padding: 1rem;
   width: 100%;
   max-width: 1280px;
   margin-inline: auto;
@@ -31,6 +32,7 @@ const { wizkids } = useApiStore();
     grid-template-columns: repeat(2, 1fr);
     padding: 2rem;
   }
+
   @media (min-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -38,5 +40,6 @@ const { wizkids } = useApiStore();
 
 .card {
   aspect-ratio: 4 / 3;
+  text-decoration: none;
 }
 </style>

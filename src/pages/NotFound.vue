@@ -1,5 +1,5 @@
 <template>
-  <div class="center">
+  <div class="page center">
     <h1>404</h1>
   </div>
 </template>

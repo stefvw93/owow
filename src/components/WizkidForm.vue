@@ -47,8 +47,6 @@ async function handleSubmit() {
     </div>
     <Button type="submit">Opslaan</Button>
   </form>
-
-  <pre>{{ formData }}</pre>
 </template>
 
 <style scoped lang="scss">
