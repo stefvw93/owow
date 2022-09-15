@@ -21,6 +21,7 @@ import NotFound from "./pages/NotFound.vue";
 import Wizkid from "./pages/Wizkid.vue";
 import EditWizkid from "./pages/EditWizkid.vue";
 import Login from "./pages/Login.vue";
+import Archive from "./pages/Archive.vue";
 import { useApiStore } from "./stores/api";
 
 const app = createApp(App);
@@ -51,7 +52,8 @@ const router = createRouter({
     { path: "/wizkid/create", component: EditWizkid },
     { path: "/wizkid/edit", component: EditWizkid },
     { path: "/wizkid/:id", component: Wizkid },
-    { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
+    { path: "/archive", component: Archive },
+    { path: "/:pathMatch(.*)*", component: NotFound },
   ],
 });
 

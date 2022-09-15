@@ -17,13 +17,19 @@ const closeMenu = () => (doShowMenu.value = !doShowMenu.value);
       <div @click="closeMenu">
         <router-link to="/">Home</router-link>
         <router-link to="/wizkid/create">Add a new Wizkid</router-link>
+
+        <template v-if="authenticated">
+          <hr />
+          <router-link to="/archive">Archive</router-link>
+        </template>
+
         <hr />
-        <router-link v-if="authenticated" to="/" @click.native="logout"
-          >Log out</router-link
-        >
-        <router-link v-if="!authenticated" to="/login" @click.native="logout"
-          >Log in</router-link
-        >
+        <router-link v-if="authenticated" to="/" @click.native="logout">
+          Log out
+        </router-link>
+        <router-link v-if="!authenticated" to="/login" @click.native="logout">
+          Log in
+        </router-link>
       </div>
 
       <div class="close touch-opacity" @click="closeMenu">
