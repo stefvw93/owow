@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { useApiStore } from "../stores/api";
 import Button from "./Button.vue";
 
-const { authenticated, logout } = useApiStore();
+const apiStore = useApiStore();
 const doShowMenu = ref(false);
 const closeMenu = () => (doShowMenu.value = !doShowMenu.value);
 </script>
@@ -18,16 +18,22 @@ const closeMenu = () => (doShowMenu.value = !doShowMenu.value);
         <router-link to="/">Home</router-link>
         <router-link to="/wizkid/create">Add a new Wizkid</router-link>
 
-        <template v-if="authenticated">
+        <template v-if="apiStore.authenticated">
           <hr />
           <router-link to="/archive">Archive</router-link>
         </template>
 
         <hr />
-        <router-link v-if="authenticated" to="/" @click.native="logout">
+        <router-link
+          v-if="apiStore.authenticated"
+          to="/"
+          @click.native="apiStore.logout"
+        >
           Log out
         </router-link>
-        <router-link v-if="!authenticated" to="/login"> Log in </router-link>
+        <router-link v-if="!apiStore.authenticated" to="/login">
+          Log in
+        </router-link>
       </div>
 
       <div class="close touch-opacity" @click="closeMenu">
